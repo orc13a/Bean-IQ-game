@@ -9,7 +9,6 @@ class Ball {
     display() {
         fill(this.fillColor);
         noStroke();
-        translate(this.x, this.y);
-        sphere(this.size);
+        circle(this.x, this.y, this.size);
     }
 }
