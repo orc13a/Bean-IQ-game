@@ -1,5 +1,16 @@
+let allBalls = {
+    red: [],
+    blue: [],
+    green: [],
+    yellow: []
+}
+
 function setup() {
     createCanvas(700, 700, WEBGL);
+    createBalls();
+    allBalls['blue'].forEach(ball => {
+        console.log(ball);
+    });
 }
 
 function draw() {
@@ -8,12 +19,18 @@ function draw() {
 
     if (mouseIsPressed) {
         // rotateX(frameCount * 0.01);
-        // rotateY(frameCount * 0.01);
-        rotateX(mouseY / 500);
-        rotateY(mouseX / 500);
+        rotateY(frameCount * 0.01);
     }
-    //noStroke();
-    fill(255);
-    translate(30, 0);
-    sphere(10, 10, 10);
+
+    allBalls['blue'].forEach(ball => {
+        ball.display();
+    });
+}
+
+function createBalls() {
+    for (let i = 1; i <= 18; i++) {
+        if (i < 5) {
+            allBalls['blue'].push(new Ball(0, (i * 10), 10, 255));
+        }
+    }
 }
